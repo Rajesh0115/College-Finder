@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Intelligent MHT-CET College Recommendation System powered by Machine Learning. Get personalized, data-driven college recommendations based on your CET percentile.">
+    <title>MHT-CET College Compass — AI-Powered Recommendations</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <!-- Animated orbs background -->
+    <div class="orb-container">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+    <div class="noise-overlay"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-brand">
+            <div class="nav-logo">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><defs><linearGradient id="lg1" x1="0" y1="0" x2="24" y2="24"><stop stop-color="#818cf8"/><stop offset="1" stop-color="#c084fc"/></linearGradient></defs><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="url(#lg1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <span class="nav-title">College Compass</span>
+            <span class="nav-ai-badge">AI</span>
+        </div>
+        <div class="nav-links">
+            <button class="nav-btn active" data-view="recommend" id="nav-recommend">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                Recommend
+            </button>
+            <button class="nav-btn" data-view="compare" id="nav-compare">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+                Compare
+            </button>
+            <button class="nav-btn" data-view="wishlist" id="nav-wishlist">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                Wishlist
+                <span class="wishlist-count" id="wishlist-count" style="display:none;">0</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ═══════ RECOMMEND VIEW ═══════ -->
+    <main class="view active" id="view-recommend">
+        <!-- Hero -->
+        <header class="hero">
+            <div class="hero-glow"></div>
+            <p class="hero-eyebrow">ML-Powered Engine</p>
+            <h1 class="hero-title">
+                Find Your <span class="shimmer-text">Perfect College</span>
+            </h1>
+            <p class="hero-subtitle">
+                Analyzing <strong id="hero-records">18,000+</strong> admission records across
+                <strong id="hero-colleges">300+</strong> colleges using Random Forest ML
+            </p>
+        </header>
+
+        <!-- Input Form -->
+        <section class="form-section">
+            <div class="form-card">
+                <div class="form-card-glow"></div>
+
+                <!-- Percentile -->
+                <div class="form-group-full">
+                    <label>Your CET Percentile</label>
+                    <div class="range-input-wrapper">
+                        <input type="range" id="percentile-slider" min="0" max="100" step="0.1" value="75">
+                        <input type="number" id="percentile" name="percentile" min="0" max="100" step="0.1" value="75">
+                    </div>
+                    <div class="range-labels">
+                        <span>0</span>
+                        <span>25</span>
+                        <span>50</span>
+                        <span>75</span>
+                        <span>100</span>
+                    </div>
+                </div>
+
+                <!-- Grid inputs -->
+                <div class="input-grid">
+                    <!-- Category -->
+                    <div class="input-group">
+                        <label for="category">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                            Category
+                        </label>
+                        <div class="select-wrap">
+                            <select id="category" name="category" required>
+                                <option value="OPEN">OPEN (General)</option>
+                                <option value="OBC">OBC</option>
+                                <option value="SC">SC</option>
+                                <option value="ST">ST</option>
+                                <option value="VJ">VJ / DT</option>
+                                <option value="NT1">NT1</option>
+                                <option value="NT2">NT2</option>
+                                <option value="NT3">NT3</option>
+                                <option value="EWS">EWS</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Branch -->
+                    <div class="input-group">
+                        <label for="branch">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                            Branch Preference
+                        </label>
+                        <div class="select-wrap">
+                            <select id="branch" name="branch" required>
+                                <option value="Any">Any Branch</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- City -->
+                    <div class="input-group">
+                        <label for="city">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            Location (Optional)
+                        </label>
+                        <div class="select-wrap">
+                            <select id="city" name="city">
+                                <option value="Any">Any City</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- College Type (NEW) -->
+                    <div class="input-group">
+                        <label for="college-type">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                            College Type
+                        </label>
+                        <div class="select-wrap">
+                            <select id="college-type" name="college_type">
+                                <option value="Any">Any Type</option>
+                                <option value="Government">Government</option>
+                                <option value="Government Autonomous">Government Autonomous</option>
+                                <option value="Government-Aided Autonomous">Govt-Aided Autonomous</option>
+                                <option value="Un-Aided">Private (Un-Aided)</option>
+                                <option value="Un-Aided Autonomous">Private Autonomous</option>
+                                <option value="University">University</option>
+                                <option value="Deemed University">Deemed University</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TFWS -->
+                <div class="tfws-section">
+                    <span class="tfws-label">TFWS Eligible?</span>
+                    <input type="hidden" id="tfws" name="tfws" value="no">
+                    <div class="tfws-toggle" id="tfws-toggle">
+                        <button type="button" class="tfws-btn active" data-value="no">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                            No
+                        </button>
+                        <button type="button" class="tfws-btn" data-value="yes">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                            Yes
+                        </button>
+                        <div class="tfws-slider" id="tfws-slider"></div>
+                    </div>
+                </div>
+
+                <!-- Submit -->
+                <button type="button" class="submit-btn" id="submit-btn" onclick="getRecommendations()">
+                    <span class="submit-btn-bg"></span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                    <span>Get Recommendations</span>
+                    <svg class="submit-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </button>
+            </div>
+        </section>
+
+        <!-- Loading State -->
+        <div class="loading-state" id="loading-state" style="display:none;">
+            <div class="loading-spinner">
+                <div class="spinner-orbit"><div class="spinner-dot"></div></div>
+                <div class="spinner-orbit orbit-2"><div class="spinner-dot"></div></div>
+                <div class="spinner-orbit orbit-3"><div class="spinner-dot"></div></div>
+                <div class="spinner-core"></div>
+            </div>
+            <p class="loading-text">Running ML prediction engine<span class="loading-dots"></span></p>
+        </div>
+
+        <!-- Results Section -->
+        <section class="results-section" id="results-section" style="display:none;">
+            <!-- Stats -->
+            <div class="stats-strip">
+                <div class="stat-chip">
+                    <span class="stat-num" id="stat-filtered">0</span>
+                    <span class="stat-txt">Analyzed</span>
+                </div>
+                <div class="stat-chip chip-safe">
+                    <span class="stat-dot dot-safe"></span>
+                    <span class="stat-num" id="stat-safe">0</span>
+                    <span class="stat-txt">Safe</span>
+                </div>
+                <div class="stat-chip chip-moderate">
+                    <span class="stat-dot dot-moderate"></span>
+                    <span class="stat-num" id="stat-moderate">0</span>
+                    <span class="stat-txt">Moderate</span>
+                </div>
+                <div class="stat-chip chip-dream">
+                    <span class="stat-dot dot-dream"></span>
+                    <span class="stat-num" id="stat-dream">0</span>
+                    <span class="stat-txt">Dream</span>
+                </div>
+            </div>
+
+            <!-- Filter Tabs -->
+            <div class="filter-bar">
+                <button class="filter-pill active" data-filter="all">All</button>
+                <button class="filter-pill" data-filter="Safe">Safe</button>
+                <button class="filter-pill" data-filter="Moderate">Moderate</button>
+                <button class="filter-pill" data-filter="Dream">Dream</button>
+            </div>
+
+            <!-- Recommendation Cards -->
+            <div class="rec-list" id="rec-grid"></div>
+        </section>
+    </main>
+
+    <!-- ═══════ COMPARE VIEW ═══════ -->
+    <main class="view" id="view-compare">
+        <header class="hero hero-sm">
+            <h1 class="hero-title hero-title-sm">Compare <span class="shimmer-text">Colleges</span></h1>
+            <p class="hero-subtitle">Side-by-side branch cutoff analysis</p>
+        </header>
+        <section class="form-section">
+            <div class="form-card">
+                <div class="form-card-glow"></div>
+                <div class="compare-inputs">
+                    <div class="input-group">
+                        <label for="compare-c1">College 1</label>
+                        <input type="text" id="compare-c1" class="text-input" placeholder="Type to search..." autocomplete="off">
+                        <div class="search-dropdown" id="dropdown-c1"></div>
+                    </div>
+                    <div class="vs-divider">
+                        <div class="vs-line"></div>
+                        <span class="vs-text">VS</span>
+                        <div class="vs-line"></div>
+                    </div>
+                    <div class="input-group">
+                        <label for="compare-c2">College 2</label>
+                        <input type="text" id="compare-c2" class="text-input" placeholder="Type to search..." autocomplete="off">
+                        <div class="search-dropdown" id="dropdown-c2"></div>
+                    </div>
+                </div>
+                <button class="submit-btn" id="compare-btn" disabled>
+                    <span class="submit-btn-bg"></span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+                    <span>Compare Colleges</span>
+                    <svg class="submit-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </button>
+            </div>
+        </section>
+
+        <div class="loading-state" id="compare-loading" style="display:none;">
+            <div class="loading-spinner"><div class="spinner-orbit"><div class="spinner-dot"></div></div><div class="spinner-orbit orbit-2"><div class="spinner-dot"></div></div><div class="spinner-core"></div></div>
+            <p class="loading-text">Comparing branch data<span class="loading-dots"></span></p>
+        </div>
+
+        <section class="compare-results" id="compare-results" style="display:none;">
+            <div class="compare-header" id="compare-header"></div>
+            <div class="table-wrap">
+                <table class="cmp-table" id="compare-table">
+                    <thead id="compare-thead"></thead>
+                    <tbody id="compare-tbody"></tbody>
+                </table>
+            </div>
+            <div class="compare-summary" id="compare-summary"></div>
+        </section>
+    </main>
+
+    <!-- ═══════ WISHLIST VIEW ═══════ -->
+    <main class="view" id="view-wishlist">
+        <header class="hero hero-sm">
+            <h1 class="hero-title hero-title-sm">Your <span class="shimmer-text">Wishlist</span></h1>
+            <p class="hero-subtitle" id="wishlist-hint">Bookmark colleges from recommendations</p>
+        </header>
+        <div class="wishlist-grid" id="wishlist-grid"></div>
+        <div class="empty-state" id="wishlist-empty" style="display:none;">
+            <div class="empty-icon">
+                <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </div>
+            <h3>No colleges saved yet</h3>
+            <p>Click the heart on any recommendation to save it here</p>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>MHT-CET 2022 CAP-II Data &bull; Random Forest ML &bull; Built for Maharashtra students</p>
+    </footer>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>

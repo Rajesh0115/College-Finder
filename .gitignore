@@ -1,0 +1,45 @@
+# ─── Python ──────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# ─── Virtual Environment ─────────────────────
+.venv/
+venv/
+env/
+ENV/
+
+# ─── Database ────────────────────────────────
+*.db
+*.sqlite3
+
+# ─── ML Models (large binary files) ──────────
+*.joblib
+*.pkl
+*.h5
+*.pt
+
+# ─── Large Data Files ────────────────────────
+# The collegepune/ folder contains large CSVs, PDFs, and model files
+# that exceed GitHub's 100MB file size limit.
+# These should be shared separately or via Git LFS.
+collegepune/
+
+# ─── IDE / Editor ────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ─── OS Files ────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ─── Logs ────────────────────────────────────
+*.log
+setup_log.txt
+stderr.txt
+stdout.txt

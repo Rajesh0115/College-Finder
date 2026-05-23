@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Navigate your future with AI-powered MHT-CET college recommendations. Smart, data-driven admissions guidance for Maharashtra students.">
+    <title>College Compass — Navigate Your Future</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/landing.css">
+</head>
+<body>
+    <!-- Cursor glow follower -->
+    <div class="cursor-glow" id="cursor-glow"></div>
+
+    <!-- Particle canvas background -->
+    <canvas id="particle-canvas"></canvas>
+
+    <!-- Grid overlay for futuristic vibe -->
+    <div class="grid-overlay"></div>
+
+    <!-- ═══════ NAVIGATION ═══════ -->
+    <nav class="landing-nav" id="landing-nav">
+        <div class="nav-inner">
+            <a href="/" class="nav-logo-link">
+                <div class="nav-logo-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z" fill="url(#navGrad)" opacity="0.9"/>
+                        <path d="M2 17l10 5 10-5" stroke="url(#navGrad)" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M2 12l10 5 10-5" stroke="url(#navGrad)" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+                        <defs><linearGradient id="navGrad" x1="2" y1="2" x2="22" y2="22"><stop stop-color="#FF6B35"/><stop offset="1" stop-color="#FF3D00"/></linearGradient></defs>
+                    </svg>
+                </div>
+                <span class="nav-logo-text">College<span class="accent">Compass</span></span>
+            </a>
+            <div class="nav-actions">
+                <a href="/login" class="nav-link">Log In</a>
+                <a href="/signup" class="nav-cta">Get Started</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ═══════ HERO SECTION ═══════ -->
+    <section class="hero-section" id="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                <span>AI-Powered • 2022 MHT-CET Data</span>
+            </div>
+
+            <h1 class="hero-headline" id="hero-headline">
+                <span class="line"><span class="word" data-delay="0">Navigate</span></span>
+                <span class="line"><span class="word" data-delay="1">Your</span> <span class="word accent-word" data-delay="2">Future.</span></span>
+            </h1>
+
+            <p class="hero-sub" id="hero-sub">
+                Stop guessing. Let our machine learning engine analyze <strong>18,000+</strong> admission records
+                across <strong>300+</strong> colleges to find your perfect match.
+            </p>
+
+            <div class="hero-ctas">
+                <a href="/signup" class="btn-primary" id="hero-cta">
+                    <span class="btn-bg"></span>
+                    <span class="btn-text">Start Exploring</span>
+                    <svg class="btn-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+                <a href="#features" class="btn-ghost">
+                    <span>See How It Works</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                </a>
+            </div>
+
+            <!-- Floating stats -->
+            <div class="hero-stats" id="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number" data-target="18000">0</span>
+                    <span class="stat-label">Admission Records</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="300">0</span>
+                    <span class="stat-label">Colleges Analyzed</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="95">0</span>
+                    <span class="stat-label">% Accuracy</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div class="scroll-indicator" id="scroll-indicator">
+            <div class="scroll-line"></div>
+            <span>Scroll</span>
+        </div>
+    </section>
+
+    <!-- ═══════ FEATURES SECTION ═══════ -->
+    <section class="features-section" id="features">
+        <div class="section-inner">
+            <div class="section-label reveal-up">// What We Offer</div>
+            <h2 class="section-title reveal-up">
+                Everything you need to<br><span class="accent">make the right choice.</span>
+            </h2>
+
+            <div class="features-grid">
+                <div class="feature-card reveal-up" data-delay="0">
+                    <div class="feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                        </svg>
+                    </div>
+                    <h3>AI Recommendations</h3>
+                    <p>Random Forest ML model scores every college-branch combination to give you ranked Safe, Moderate, and Dream picks.</p>
+                    <div class="feature-glow"></div>
+                </div>
+
+                <div class="feature-card reveal-up" data-delay="1">
+                    <div class="feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M18 20V10M12 20V4M6 20v-6"/>
+                        </svg>
+                    </div>
+                    <h3>Smart Compare</h3>
+                    <p>Put any two colleges side by side. See branch-level cutoff differences, common programs, and which one fits you better.</p>
+                    <div class="feature-glow"></div>
+                </div>
+
+                <div class="feature-card reveal-up" data-delay="2">
+                    <div class="feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                        </svg>
+                    </div>
+                    <h3>Personal Wishlist</h3>
+                    <p>Bookmark your favourite colleges. Your wishlist is saved to your account — access it from anywhere, anytime.</p>
+                    <div class="feature-glow"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════ HOW IT WORKS ═══════ -->
+    <section class="steps-section" id="steps">
+        <div class="section-inner">
+            <div class="section-label reveal-up">// How It Works</div>
+            <h2 class="section-title reveal-up">
+                Three steps to your<br><span class="accent">dream college.</span>
+            </h2>
+
+            <div class="steps-timeline">
+                <div class="step-card reveal-up" data-delay="0">
+                    <div class="step-number">01</div>
+                    <div class="step-content">
+                        <h3>Create Your Account</h3>
+                        <p>Sign up in 30 seconds. Just your name, email, and a password. No phone number, no OTP drama.</p>
+                    </div>
+                    <div class="step-line"></div>
+                </div>
+
+                <div class="step-card reveal-up" data-delay="1">
+                    <div class="step-number">02</div>
+                    <div class="step-content">
+                        <h3>Enter Your Details</h3>
+                        <p>Tell us your CET percentile, preferred branch, category, and city. Our ML model does the heavy lifting.</p>
+                    </div>
+                    <div class="step-line"></div>
+                </div>
+
+                <div class="step-card reveal-up" data-delay="2">
+                    <div class="step-number">03</div>
+                    <div class="step-content">
+                        <h3>Get Your Results</h3>
+                        <p>Receive a ranked list of colleges, tagged as Safe, Moderate, or Dream. Save your favorites and compare options.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════ CTA SECTION ═══════ -->
+    <section class="cta-section" id="cta">
+        <div class="cta-inner">
+            <div class="cta-glow"></div>
+            <h2 class="cta-title reveal-up">
+                Ready to find<br>your <span class="accent">college?</span>
+            </h2>
+            <p class="cta-sub reveal-up">Join thousands of Maharashtra students making smarter decisions.</p>
+            <div class="cta-buttons reveal-up">
+                <a href="/signup" class="btn-primary btn-lg">
+                    <span class="btn-bg"></span>
+                    <span class="btn-text">Create Free Account</span>
+                    <svg class="btn-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+                <a href="/login" class="btn-ghost">
+                    <span>Already have an account? Log in</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════ FOOTER ═══════ -->
+    <footer class="landing-footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <span class="nav-logo-text">College<span class="accent">Compass</span></span>
+                <p>MHT-CET 2022 CAP-II Data • Random Forest ML • Built for Maharashtra students</p>
+            </div>
+            <div class="footer-links">
+                <a href="/login">Login</a>
+                <a href="/signup">Sign Up</a>
+                <a href="#features">Features</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/static/landing.js"></script>
+</body>
+</html>
