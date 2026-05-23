@@ -68,7 +68,7 @@ College Finder/
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/YOUR_USERNAME/College-Finder.git
+   git clone https://github.com/Rajesh0115/College-Finder.git
    cd College-Finder
    ```
 
